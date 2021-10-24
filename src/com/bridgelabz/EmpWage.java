@@ -1,35 +1,36 @@
 package com.bridgelabz;
 
 public class EmpWage {
-    public static void empWageStatus(int num){
-        int Wage_Per_Hr= 20;
-        int Day_Hrs = 8;
-        int PartTime_Hrs = 8;
+    public static void empWageStatus(int num) {
+        public static final int part_time = 1;
+        public static final int full_time = 2;
+        public static final int wage_per_hour = 20;
+        public static final int number_of_working_days = 20;
 
-        switch (num){
-            case 1:
-                System.out.println("Employee Present");
-                System.out.println("DailyWage = " + Wage_Per_Hr * Day_Hrs);
-                break;
-            case 2:
-                System.out.println("Employee Present");
-                System.out.println("DailyWage with Part Time = " + Wage_Per_Hr * (Day_Hrs + PartTime_Hrs));
-                break;
-            case 0:
-                System.out.println("Employee Absent");
-                System.out.println("DailyWage = "+0);
+
+        public static void main (String[]args){
+            int working_hours = 0;
+            int salary = 0;
+            int totalsalary = 0;
+            for (int day = 0; day < number_of_working_days; day++) {
+                int empcheck = (int) Math.floor(Math.random() * 10) % 3;
+
+                switch (empcheck) {
+                    case part_time:
+                        working_hours = 4;
+                        break;
+                    case full_time:
+                        working_hours = 8;
+                        break;
+                    default:
+                        working_hours = 0;
+                }
+                salary = working_hours * wage_per_hour;
+                totalsalary += salary;
+                System.out.println(" Employee wage is: " + salary);
+            }
+            System.out.println(" Employee totalsalary is: " + totalsalary);
         }
-    }
-    public static void main(String[] args) {
-        System.out.println("Welcome to the Employee Wage Computation Program");
-
-        Random random = new Random();
-        int r = random.nextInt(3);
-        empWageStatus(r);
     }
 
 }
-
-
-
-
