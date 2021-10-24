@@ -1,4 +1,5 @@
 package com.bridgelabz;
+import java.util.*;
 
 public class EmpWage {
     public static void empWageForMonth(int num){
