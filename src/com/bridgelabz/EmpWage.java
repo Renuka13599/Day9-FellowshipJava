@@ -1,4 +1,5 @@
 package com.bridgelabz;
+import java.util.*;
 
 public class EmpWage {
     public static   int Full_Time_Hrs = 8;
