@@ -1,30 +1,34 @@
 package com.bridgelabz;
 
 public class EmpWage {
-    public static final double IS_FULL_TIME = 8;
-    public static final double IS_PART_TIME = 4;
-    public static final double EMP_WAGE_PER_HR = 20;
+    public static void empWageStatus(int num){
+        int Wage_Per_Hr= 20;
+        int Day_Hrs = 8;
+        int PartTime_Hrs = 8;
 
-    public static void main(String[] args) {
-        double Empcheck = (double) Math.floor(Math.random() * 10) % 3;
-        double calcDailyWage = 0;
-        if (Empcheck == 2) {
-            System.out.println("Employee is present");
-            calcDailyWage = IS_FULL_TIME * EMP_WAGE_PER_HR;
-            System.out.printf("Calculate daily wage:" +calcDailyWage);
-
-        } else if (Empcheck == 1) {
-            calcDailyWage = IS_PART_TIME * EMP_WAGE_PER_HR;
-            System.out.println("Part time wage is:");
-            System.out.println("Calculate daily wage:" + calcDailyWage);
-        } else {
-            System.out.println("Employee is absent");
-
-            System.out.println("Calculate daily wage:" + calcDailyWage);
+        switch (num){
+            case 1:
+                System.out.println("Employee Present");
+                System.out.println("DailyWage = " + Wage_Per_Hr * Day_Hrs);
+                break;
+            case 2:
+                System.out.println("Employee Present");
+                System.out.println("DailyWage with Part Time = " + Wage_Per_Hr * (Day_Hrs + PartTime_Hrs));
+                break;
+            case 0:
+                System.out.println("Employee Absent");
+                System.out.println("DailyWage = "+0);
         }
     }
-}
+    public static void main(String[] args) {
+        System.out.println("Welcome to the Employee Wage Computation Program");
 
+        Random random = new Random();
+        int r = random.nextInt(3);
+        empWageStatus(r);
+    }
+
+}
 
 
 
