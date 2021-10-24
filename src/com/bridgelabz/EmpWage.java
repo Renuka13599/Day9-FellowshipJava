@@ -1,4 +1,5 @@
 package com.bridgelabz;
+import java.util.random;
 
 public class EmpWage {
     public static void empWageStatus(int num){
