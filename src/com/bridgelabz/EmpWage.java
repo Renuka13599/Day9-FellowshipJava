@@ -1,45 +1,66 @@
 package com.bridgelabz;
 
 public class EmpWage {
-    public static void empWageForMonth(int num){
-        int Wage_Per_Hr = 20;
-        int Day_Hrs = 8;
-        int Part_Time_Hrs = 4;
-        int Days = 20;
-        int Max_Hrs_Per_Month = 100;
+    public static   int Full_Time_Hrs = 8;
+    public static  int PartTime_Hrs = 4;
+    double dailywage = 0;
+    double monthlywage = 0;
 
-        int totalEmpHrs = 0;
-        int empHrs = 0;
-        int totalWorkingDays = 0;
-        double monthlywage = 0;
+    int workingDays ;
+    int wagePerHour;
 
-        while (totalEmpHrs <= Max_Hrs_Per_Month && totalWorkingDays < Days){
-            totalWorkingDays++;
-            switch (num){
+    public  void setVariables(int x, int y) {
+        this.workingDays=x;
+        this.wagePerHour=y;
+    }
+
+    public  void wageForMultiplecmy(){
+        Random random = new Random();
+        int empCheck = random.nextInt(3);
+
+
+        for (int i =0; i< workingDays; i++){
+
+            switch (empCheck){
                 case 1:
-                    empHrs = Day_Hrs;
-
+                    dailywage = wagePerHour * Full_Time_Hrs * i;
                     break;
                 case 2:
-                    empHrs = Part_Time_Hrs;
+                    dailywage = wagePerHour * (Full_Time_Hrs + PartTime_Hrs) * i;
                     break;
                 case 0:
-                    empHrs = 0;
                     break;
+
             }
-            totalEmpHrs = totalEmpHrs + empHrs;
+            monthlywage = monthlywage + dailywage;
         }
-        monthlywage = totalEmpHrs * Wage_Per_Hr;
-        System.out.println("Monthly Wage : " + monthlywage);
-
-
+        System.out.println( monthlywage);
     }
+
+
 
     public static void main(String[] args) {
 
-        Random random = new Random();
-        int a = random.nextInt(3);
-        empWageForMonth(a);
+
+
+        EmpWage Tcs = new EmpWage();
+        System.out.println("Monthley wage for Tcs company is ");
+        Tcs.setVariables(20, 50);
+        Tcs.wageForMultiplecmy();
+
+
+
+        EmpWage Infosys = new EmpWage();
+        System.out.println("Monthley wage for Infosys company is ");
+        Infosys.setVariables(25, 55);
+        Infosys.wageForMultiplecmy();
+
+        EmpWage Capgemini = new EmpWage();
+        System.out.println("Monthley wage for Capgemini company is ");
+        Capgemini.setVariables(30, 60);
+        Capgemini.wageForMultiplecmy();
 
     }
 }
+
+
