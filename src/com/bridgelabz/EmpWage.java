@@ -1,38 +1,45 @@
 package com.bridgelabz;
 
 public class EmpWage {
-    public static final int IS_PART_TIME=1;
-    public static final int IS_FULL_TIME=2;
-    public static final int EMP_RATE_PER_HOUR =20;
-    public static final int NUM_OF_WORKING_DAYS=20;
-    public static final int MAX_HRS_IN_MONTH=100;
+    public static void empWageForMonth(int num){
+        int Wage_Per_Hr = 20;
+        int Day_Hrs = 8;
+        int Part_Time_Hrs = 4;
+        int Days = 20;
+        int Max_Hrs_Per_Month = 100;
 
-    public static void main(String[] args){
-        int empHrs=0;
-        int totalEmpHrs=0;
-        int totalWorkingDays=0;
+        int totalEmpHrs = 0;
+        int empHrs = 0;
+        int totalWorkingDays = 0;
+        double monthlywage = 0;
 
-
-        while (totalEmpHrs<= MAX_HRS_IN_MONTH  && totalWorkingDays < NUM_OF_WORKING_DAYS) {
+        while (totalEmpHrs <= Max_Hrs_Per_Month && totalWorkingDays < Days){
             totalWorkingDays++;
-            int empCheck =(int) Math.floor(Math.random() * 10 ) % 3 ;
-            switch (empCheck) {
-                case  IS_PART_TIME:
-                    empHrs =4;
-                    break;
-                case IS_FULL_TIME:
-                    empHrs =8;
-                    break;
-                default:
-                    empHrs =0;
+            switch (num){
+                case 1:
+                    empHrs = Day_Hrs;
 
+                    break;
+                case 2:
+                    empHrs = Part_Time_Hrs;
+                    break;
+                case 0:
+                    empHrs = 0;
+                    break;
             }
-            totalEmpHrs += empHrs;
-            System.out.println("Day#:" + totalWorkingDays + " Emp Hr:" +empHrs);
+            totalEmpHrs = totalEmpHrs + empHrs;
         }
-        int totalEmpWage = totalEmpHrs *EMP_RATE_PER_HOUR;
-        System.out.println("Total Emp Wage:" + totalEmpWage);
+        monthlywage = totalEmpHrs * Wage_Per_Hr;
+        System.out.println("Monthly Wage : " + monthlywage);
+
+
+    }
+
+    public static void main(String[] args) {
+
+        Random random = new Random();
+        int a = random.nextInt(3);
+        empWageForMonth(a);
+
     }
 }
-
-
